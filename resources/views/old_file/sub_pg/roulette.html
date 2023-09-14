@@ -1,0 +1,132 @@
+<?php
+include_once ('../common.php');
+include_once ('../head.php');
+
+
+?>
+<script  src="/js/rotate.js"></script><!-- http://jqueryrotate.com/ 참조 -->
+
+
+
+<script type="text/javascript">
+
+var ing = false;
+function spin_the_wheel(id)
+{
+	var cnt = 0;
+	if(ing == false)
+	{		
+		$.ajax({
+			type: 'post',
+			dataType: 'json',
+			url: '/ajax/set_attend_check.php',
+			data: {mb_id:id},
+			success: function (data) {			
+				 if (data != 'empty') 
+				 {			
+					if(data.chk == true)
+					{
+						ing = true;
+						rotate_wheel(data.degree,data.prd);						
+					}
+					else
+					{
+						alert('오늘은 이미 참여 하셨습니다.\n내일 다시 참여해주세요!');
+					}
+					
+				}
+			},
+			error: function (request, status, error) {
+				console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);
+			}
+		});
+	}
+	else
+	{
+		alert('결과가 나올때 까지 잠시만 기다려 주세요');
+	}
+	
+
+} 
+/*34도*/
+
+function rotate_wheel(degree,prd)
+{
+		 
+	$('#wheelcanvas').rotate({
+	  angle: 0,
+	  //animateTo:<?=$rand?>, //2. 이각도를돌려라
+	  animateTo:degree, //2. 이각도를돌려라
+	  duration:6000, //1. 이것만큼 
+	  callback:function(){ 
+		ing=false;
+		alert('축하드립니다.\n['+prd+']상품에 당첨되었습니다!\n내일 또 도전해주세요!');
+		} //3.돌고난뒤 콜백
+	  })
+			
+
+}
+
+
+
+
+  
+  function draw() {			
+   drawRouletteWheel();
+  }
+  
+  function drawRouletteWheel() {
+    var canvas = document.getElementById("wheelcanvas");
+
+		//이미지 객체 생성
+			var imgClo = new Image();
+
+			//페이지 로드후 이미지가 로드 되었을 때 이미지 출력
+			imgClo.addEventListener('load', function(){
+				//로드된 이미지를 캔버스에 출력
+				var ctx = document.getElementById('wheelcanvas').getContext("2d");
+
+				//canvas.drawImage() 함수를 사용하여 이미지 출력
+				//drawImage ( image sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+				ctx.drawImage( imgClo , 0, 0, 700, 700);
+			
+			},false);
+
+			//이미지 경로 설정
+			imgClo.src="./img/roulette.png";
+
+
+
+}
+
+
+  
+  draw();
+</script>
+
+<style type="text/css">
+	.cim_style{margin: 265px 0 0 380px;}
+	.roule_style{margin: 285px 0 0 75px}
+	.check_btn_style{margin: 530px 0 0 324px;}
+	.abo{position:absolute;left:0;top:0}
+</style>
+<div class="content-wrapper">
+
+		<div class="banner_box rel">
+			<div class="roule_style abo">                	
+				<canvas id="wheelcanvas" width="700" height="700"></canvas>
+			</div>
+
+			<img src='./img/check_btn.png' id='spin_bt' class='check_btn_style abo' onclick="spin_the_wheel('test11')">
+			<img src='./img/check_chim.png' class='cim_style abo'>
+		</div>
+
+</div><!-- content-wrapper -->
+
+
+
+
+
+<?php
+include_once(G5_THEME_PATH.'/tail.php');
+?>

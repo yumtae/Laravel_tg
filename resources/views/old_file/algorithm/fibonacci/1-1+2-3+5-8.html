@@ -1,0 +1,75 @@
+<script type="text/javascript">
+
+
+var sum = 0 ; 
+var temp =1;
+for (a = 1, b = 1, stack = 0  ; stack < 1000  ;  b = a,a = stack )
+{
+
+	stack = a + b; // 더해지고 빼져야할값( 피보나치수열 )
+
+	sum = sum + stack*temp; //( 더해지고 뺴지고 반복해야함 *-1을 하고싶지만 a에 영향을미침 )
+
+	document.write('stack값 =' +stack +' sum값 ='+sum + '<br/>');
+
+	temp = temp*-1;
+
+}
+	
+
+
+	
+</script>
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+<script type="text/javascript">
+
+
+var sum = 0 ; 
+var temp =1;
+for (a = 1, b = 1, stack = 0,i=2 ; stack < 1000  ;  b = a, a = stack , i++ )
+{
+
+	stack = a + b; // 더해지고 빼져야할값( 피보나치수열 )
+
+	
+	if(i % 5 ==0){
+		sum = sum * stack;
+		temp = temp*-1; // 부호변경
+		
+
+	}else{
+		sum = sum + stack*temp;
+	
+	}
+
+	
+	document.write('stack값 =' +stack +' sum값 ='+sum + '<br/>');
+	
+
+
+	temp = temp*-1;//부호변경
+
+
+
+
+
+	if(i % 5 ==0){  //보기편하게 
+		document.write('5번째!');
+	}
+
+	
+
+}
+
+	
+</script>

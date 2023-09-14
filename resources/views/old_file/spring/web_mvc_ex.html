@@ -1,0 +1,196 @@
+<?php
+	include_once "../common.php";
+	include_once "../head.php";
+
+?>
+
+
+
+<div class="java_spring_content_box">
+	<h2>회원 관리 예제 - 웹MVC 개발 </h2>
+
+		<ul class='color_red'>
+			<li>{회원 웹 기능 - 홈 화면 추가}</li>
+			<li>{회원 웹 기능 - 등록}</li>
+			<li>{회원 웹 기능 - 조회}</li>
+
+		</ul>
+
+
+
+</div><!-- /java_spring_content_box -->
+ 
+
+
+<div class="java_spring_content_box">
+	<h3>회원 관리 예제 - 홈 화면 추가 </h3>
+
+
+	<p>*홈 컨트롤러 추가*</p>
+<pre class='java_source_code'>
+package hello.hellospring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+
+    //index로 들어왔을때 호출되서 home 으로보냄
+    @GetMapping("/")
+    public String home(){
+            return "home";
+
+    }
+
+}
+
+</pre>
+
+	<p>*회원 관리용 홈*</p>
+<pre class='java_source_code'>
+<!DOCTYPE html>
+&lt;html xmlns:th="http://www.thymeleaf.org">
+
+&lt;body>
+    &lt;div class="container">
+        &lt;h1>Hello Spring&lt;/h1>
+        &lt;p>회원 기능 &lt;/p>
+        &lt;p>
+            &lt;a href="/members/new">회원 가입&lt;/a>
+            &lt;a href="/members/">회원 목록&lt;/a>
+
+        &lt;/p>
+    &lt;/div>
+
+&lt;/body>
+&lt;/html>
+</pre>
+<div  >
+	실행 :  <span class='color_red'>http://localhost:8080</span>
+</div>
+
+
+</div><!-- /java_spring_content_box -->
+
+
+
+<div class="java_spring_content_box">
+<h3>회원 웹 기능 - 등록 </h3>
+
+	<p>*회원 웹기능 - 등록 기능*</p>
+<pre class='java_source_code'>
+@GetMapping("/members/new")
+    public String createForm(){
+        return "members/createMemberForm";
+    }
+
+    @PostMapping("/members/new")
+    public String create(MemberForm form){
+        Member member = new Member();
+        member.setName(form.getName());
+
+        memberService.join(member);
+
+        //콘솔 테스트
+        //System.out.println("member = " + member.getName());
+
+        return "redirect:/";
+    }
+</pre>
+
+
+	<p>*회원 웹기능 - 등록 HTML*</p>
+<pre class='java_source_code'>
+&lt;!DOCTYPE html>
+
+&lt;html xmlns:th="http://www.thymeleaf.org">
+
+
+
+&lt;body>
+&lt;div class="container">
+
+    &lt;form action ="/members/new" method="post">
+      &lt;div class="form-group">
+        &lt;lavel for ="name">이름&lt;/lavel>
+        &lt;input type="text" id ="name" name="name" placeholder="이름을 입력하세요">
+      &lt;/div>
+      &lt;button type="submit">등록&lt;/button>
+    &lt;/form>
+
+
+&lt;/div>
+
+&lt;/body>
+&lt;/html>
+
+</pre>
+<div  >
+	실행 :  <span class='color_red'>http://localhost:8080/members/new</span>
+</div>
+
+</div>
+
+
+
+
+
+<div class="java_spring_content_box">
+<h3>회원 웹 기능 - 등록 </h3>
+
+	<p>*회원 웹기능 - 조회 기능*</p>
+<pre class='java_source_code'>
+@GetMapping("/members")
+    public String  list(Model model){
+        List&ltMember> members = memberService.findMembers();
+        model.addAttribute("members" , members);
+        return "members/memberList";
+    }
+</pre>
+
+	<p>*회원 웹기능 - 조회 html*</p>
+<pre class='java_source_code'>
+&lt;!DOCTYPE html>
+
+&lt;html xmlns:th="http://www.thymeleaf.org">
+
+
+
+&lt;body>
+&lt;div class="container">
+
+    &lt;table>
+		&lt;thead>
+			&lt;tr>
+				&lt;th>#&lt;/th>
+				&lt;th>이름&lt;/th>
+			&lt;/tr>
+		&lt;/thead>
+		&lt;tbody>
+			&lt;tr th:each="member : ${members}">
+				&lt;td th:text="${member.id}">&lt;/td>
+				&lt;td th:text="${member.name}">&lt;/td>
+			&lt;/tr>
+		&lt;/tbody>
+    &lt;/table>
+
+
+&lt;/div>
+
+&lt;/body>
+&lt;/html>
+
+</pre>
+<div  >
+	실행 :  <span class='color_red'>http://localhost:8080/members</span>
+</div>
+
+
+
+</div>
+
+
+
+
+

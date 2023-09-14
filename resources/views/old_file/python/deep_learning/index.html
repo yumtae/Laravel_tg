@@ -1,0 +1,72 @@
+<?php
+include_once '../../common.php';
+include_once '../../head.php';
+?>
+
+
+
+<a href="./test_numpy.py">이차원행열 덧셈</a><br/>
+<a href="./test_numpy2.py">이차원행열 사칙연산 / vertor 사용해 shape,차원(ndim) 출력</a><br/>
+<a href="./test_numpy3.py">서로다르게생긴 행렬 곱 수행</a><br/>
+
+<a href="./numpy_broadcast.py">numpy 함수 - broadcast ( 서로다른행의 덧셈 )</a><br/>
+<a href="./numpy_concatenate.py">numpy 함수 - concatenate ( 행과 열을 추가하기위한 함수 )</a><br/>
+<a href="./numpy_indexing_slicing.py">numpy 함수 - indexing/slicing ( 행과열을 선택 )</a><br/>
+<a href="./numpy_iterator.py">numpy 함수 - iterator ( 행렬을 순서대로 불러옴 )</a><br/>
+<a href="./numpy_loadxtx.py">numpy 함수 - loadxtx ( 행과열을 선택해서 불러올 수 있도록 도와줌 )</a><br/>
+<a href="./numpy_random.py">numpy 함수 - random/sum/exp/log</a><br/>
+<a href="./numpy_argmax.py">numpy 함수 - max/min/argmax/argmin/ones/zeros ( 최대값,최소값,최대값위치,최소값위치,모든값1로,모든값0으로)</a><br/>
+<a href="./numpy_matplotlib.py">numpy 함수 - matplotlib (그래프제작함수) <br/> <img src='./test.png' style='width:30%'></a><br/>
+
+
+<a href="./differential.py">수치미분 구현(변수1개) </a><br/>
+<a href="./differential2.py">수치미분 1차버전(변수1개) </a><br/>
+<a href="./differential3.py">다변수 함수 수치미분(편미분예제-1변수함수)</a><br/>
+<a href="./differential4.py">다변수 함수 수치미분(편미분예제-2변수함수)</a><br/>
+<a href="./differential5.py">다변수 함수 수치미분(편미분예제-4변수함수)</a><br/>
+
+
+
+<a href="./linear_regression.py">회귀_예제1(입력값2개)</a><br/>
+<a href="./linear_regression2.py">회귀_예제2(입력값3개)</a><br/>
+<a href="./classification.py">분류_예제1(0 or 1)</a><br/>
+<a href="./classification2.py">분류_예제2(0 or 1)</a><br/>
+
+
+
+
+
+
+<script type="text/javascript">
+function product_list(x){
+	return x*2
+
+}
+
+
+$(function(){
+	var arr1 = [ 1 , 2 , 3 ]
+	//var arr1 = { 1 : 10, 2 : 20, 3: 30 }
+
+	function func(x){
+		return x * 2;
+	}
+
+	//var map1 = arr1.map(func(arr1))
+
+
+	/*$(function(){
+		while(arr1.lenght){
+			console.log(map1);
+		}
+	})*/
+
+
+console.log(func(arr1));
+	
+
+})
+
+</script>
+
+

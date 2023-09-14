@@ -1,0 +1,56 @@
+<script type="text/javascript">
+
+function input(){
+	var input = document.getElementById("input").value; 
+
+	binary_conversion(input);
+}
+
+
+
+
+var stack =1 ; //1자리수는 1
+
+
+function binary_conversion(n){ 
+
+	document.write(n+' 십진법변환 =');
+	
+
+	var n_array = n.split(""); // 이진법을 배열로변환
+
+
+	for( sum = 0 , i = n_array.length-1 ; i >= 0 ; i--  ){  //이진법 배열 수 만큼 돌아서
+		
+		if( n_array[i] == 1){
+			sum = sum + stack;
+		}  
+		
+			stack = stack*2;  // 이진법 1+2+4+8+16...	
+	}
+
+
+		document.write(sum);
+
+
+}
+
+	
+
+
+
+
+
+</script>
+
+
+
+<div class="">
+	<input type="text" id="input" value='10111'><br>
+	<button onclick="input()">입력받기</button>
+
+</div>
+
+
+
+<script  src="https://code.jquery.com/jquery-latest.min.js"></script>

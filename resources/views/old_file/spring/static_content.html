@@ -1,0 +1,105 @@
+<?php
+	include_once "../common.php";
+	include_once "../head.php";
+
+?>
+
+
+<div class="java_spring_content_box">
+	<h1>정적페이지 </h1>
+	<p>개발 페이지가 아닌 html만 그대로 뿌려줌</p>
+	<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/web.html#web" target='_blank'>https://docs.spring.io/spring-boot/docs/current/reference/html/web.html#web</a> (스프링 설명)
+
+	<div class='margin_top_bottom_30' >
+		<img src='./img/static_content.png'>
+		<p class='font_size_1.2em'>컨트롤러에서 먼저 찾은 후 없으면 static 폴더에서 찾음</p>
+	</div>
+	<div  >
+		실행 :  <span class='color_red'>http://localhost:8080/hello-static.html</span>
+	</div>
+	
+
+</div><!-- /java_spring_content_box -->
+
+
+<div class="java_spring_content_box">
+	<h3>MVC </h3>
+	
+	<p>그대로 뿌리는게 아니라 templates으로 보낸뒤 name값을 받아 변환 후 HTML을 반환</p>
+	<div class='margin_top_bottom_30'>
+		<img src='./img/static_content.png'>
+		<p class='font_size_1.2em'>컨트롤러 먼저 맵핑 후 메소드호출</p>
+	</div>
+	<div  >
+		실행 :  <span class='color_red'>http://localhost:8080/hello-mvc?name=spring!!!!!!</span>
+	</div>
+<div class='source_wrap'>
+		<h4> 예제소스 (컨트롤러 페이지)</h4>
+<pre class='java_source_code'>	
+@GetMapping("hello-mvc")
+public String helloMvc( @RequestParam("name" ) String name, Model model){
+	model.addAttribute("name", name);
+	return "hello-template";
+
+}
+</pre>
+</div><!-- /source_wrap -->
+</div><!-- /java_spring_content_box -->
+
+
+
+
+
+<div class="java_spring_content_box">
+	<h3>API 객체 반환</h3>
+	
+	<p>객체를 만들어  @ResponseBody를 사용해 값을내리면 JSON 형태가 반환됨 (XML도 사용 하나 기본적으로 json으로 되잇음)</p>
+	
+	<div class='margin_top_bottom_30'>
+		<img src='./img/reponsivebody.png'>
+		<p class='font_size_1.2em'>@ResponseBody가 templates으로 보내지 않고 http에 즉시 응답 // jsonconverter가 객체를  json으로 반환</p>
+	</div>
+
+	<div  >
+		실행 :  <span class='color_red'>http://localhost:8080/hello-api?name=spring!!!!!!</span>
+	</div>
+
+	<div class='source_wrap'>
+		<h4> 예제소스 (컨트롤러 페이지)</h4>
+
+
+<pre class='java_source_code'>
+//객체를 만들어넘김 {"name":"spring!!!!!!"} 
+	@GetMapping("hello-api") 
+	@ResponseBody  //값을 그대로 받아 내림
+	public Hello helloApi(@RequestParam("name")   String name){
+		Hello hello = new Hello();
+		hello.setName(name);
+		return hello;
+
+
+	}
+
+	static class Hello{
+		private String name;
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+	}
+
+
+</pre>
+
+	</div >
+	
+</div><!-- /java_spring_content_box -->
+
+
+
+

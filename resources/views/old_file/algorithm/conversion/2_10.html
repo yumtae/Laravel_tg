@@ -1,0 +1,59 @@
+<script type="text/javascript">
+
+function input(){
+	var input = document.getElementById("input").value; 
+
+	binary_conversion(input);
+}
+
+
+
+binary_array = new Array()  //나머지값 담을 배열 선언
+
+
+
+function binary_conversion(n){
+
+	document.write(n+' 이진법변환 =');
+
+
+	for( i = 0 ;  n >= 1  ; i++ ){  //배열을위한 i초기화
+		
+		binary_array[i] = n % 2  ; //나머지값 삽입
+		n = n / 2  ; // 47%2 = 36.5???
+		n = Math.floor(n); //소수값버림
+
+
+		if(n == 1){  //나눌몫이없으면끝
+			binary_array[i+1] = n; //마지막몫은 이진법의맨앞자리
+			break;
+		}
+		
+
+	}
+
+
+	//배열을 거꾸로
+	for( i = binary_array.length-1 ; i >= 0 ; i--){  //-1이없으면 undefined(배열은0부터시작?)
+		document.write( binary_array[i]  );	
+	}
+
+	
+	
+}
+
+
+
+
+</script>
+
+
+
+<div class="">
+	<input type="text" id="input" value='47'><br>
+	<button onclick="input()">입력받기</button>
+
+</div>
+
+
+
