@@ -2,16 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+
 
 Route::get('/', function () {
     return view('index');
@@ -24,12 +16,15 @@ Route::get('/engineer', function () { return view('old_file.engineer.index'); })
 
 
 
+
+
+
 //산업기사실기
 Route::get('/industrial_skill', function () { return view('old_file.industrial_skill.index'); });
 Route::get('/process/{no}', [App\Http\Controllers\OldFileController::class,'industrialSkillProcess']);
 Route::get('/System_management/{no}', [App\Http\Controllers\OldFileController::class,'industrialSkillSystemManagement']);
 Route::get('/new_technology/{no}', [App\Http\Controllers\OldFileController::class,'industrialSkillNewTechnology']);
-
+Route::get('/definition/{no}', [App\Http\Controllers\OldFileController::class,'industrialSkillDefinition']);
 
 
 
@@ -41,6 +36,22 @@ Route::get('/algorithm', function () { return view('old_file.algorithm.index'); 
 
 
 
+
+
+    // 이 그룹 내의 모든 라우트는 로그인한 사용자에게만 접근 가능합니다.
+    Route::get('/image/create', [App\Http\Controllers\ImageController::class, 'create'])->name('image.create');
+    Route::post('/image/store', [App\Http\Controllers\ImageController::class, 'store'] )->name('image.store');
+
+
+
+//이미지업로드 예제
+
+
+Route::get('/image' , [App\Http\Controllers\ImageController::class, 'index'] )->name('image.index');
+
+
+
+//게시판예제
 
 Route::get('/boardEx' , [App\Http\Controllers\BoardExController::class,'index'])->name('BoardEx.index');
 
@@ -60,6 +71,7 @@ Route::delete('/boardEx/{boardEx}' , [App\Http\Controllers\BoardExController::cl
 
 
 
+
 Route::get('/engineer_skill', function () { return view('old_file.engineer_skill.index'); });
 Route::get('/engineer_skill/SQL/{no}', [App\Http\Controllers\OldFileController::class,'SQLPage']);
 Route::get('/engineer_skill/requirements/{no}', [App\Http\Controllers\OldFileController::class,'requirementsPage']); 
@@ -71,8 +83,6 @@ Route::get('/engineer_skill/skill_test/{no}', [App\Http\Controllers\OldFileContr
 Route::get('/engineer_skill/program_language/{no}', [App\Http\Controllers\OldFileController::class,'program_languagePage']);
 
 Route::get('/engineer_skill/interface_design/{no}', [App\Http\Controllers\OldFileController::class,'interface_designPage']);
-
-
 
 
 

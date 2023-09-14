@@ -37,8 +37,16 @@
                 <th scope="row">{{$BoardVal->id}}</th>
                 <td><a href="{{route("BoardEx.show", $BoardVal->id)}}">{{$BoardVal->name}}</a></td>
                 <td>{{$BoardVal->created_at}}</td>
-                <td>  <a href="{{route("BoardEx.edit", $BoardVal)}}">Edit</a>
-                        / <a href="{{route("BoardEx.destroy", $BoardVal)}}"> Delete</a></td>
+                <td>  <input type="button" value="Edit" onclick="location.href='{{route("BoardEx.edit", $BoardVal)}}'"/>
+
+                    <form action="{{route("BoardEx.destroy", $BoardVal)}}" method="post" style="display:inline-block;">
+                        {{-- delete method와 csrf 처리필요 --}}
+                        @method('delete')
+                        @csrf
+                        <input onclick="return confirm('정말로 삭제하겠습니까?')" type="submit" value="delete"/>
+                    </form>
+                       
+                </td>
             </tr>
         @endforeach
 

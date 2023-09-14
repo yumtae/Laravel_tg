@@ -1,4 +1,4 @@
-@include('user._layouts.common_css');
+@include('user._layouts.common_css')
 
 <h1>DB설계, 구축</h1>
 

@@ -13,7 +13,7 @@ class BoardEx extends Model
     protected $table = 'BoardEx';
 
     protected $fillable = [
-        'name', 'content'
+        'name', 'content','call'
     ];
 
 

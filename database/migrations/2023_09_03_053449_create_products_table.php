@@ -11,7 +11,7 @@ class CreateProductsTable extends Migration
      *
      * @return void
      */
-    public function up()
+   /* public function up()
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('content',256);
             $table->timestamps();
         });
-    }
+    }*/
 
     /**
      * Reverse the migrations.

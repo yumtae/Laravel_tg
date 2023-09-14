@@ -1,4 +1,4 @@
-@include('user._layouts.common_css');
+@include('user._layouts.common_css')
 
 
  {{md5(time() + 5)}}
@@ -15,11 +15,19 @@
 <a href="https://www.iwinv.kr/" target="_BLANK"><img src ='/image/iwinv.jpg' style="width:600px"></a>
 <br/>
 
+
+<a href="/boardEx">라라벨 게시판</a><br/>
+<a href="/image">라라벨 이미지 업로드</a><br/>
+
+
 <a href="/industrial_skill">정보처리산업기사(실기)</a><br/>
 <a href="./engineer">정보처리기사(필기)</a><br/>
 <a href="./engineer_skill">정보처리기사(실기)</a><br/>
+
+
+
 <!-- <a href="./stardewvalley">stardewvalley</a><br/> -->
-<!-- <a href="./initial">initial</a><br/> -->
+
 <a href="./network">네트워크관리사2급</a><br/>
 <a href="./excel">PHP - excel</a><br/>
 

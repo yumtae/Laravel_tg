@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BoardEx;
+use App\Http\Requests\BoardExRequest;
 
 class BoardExController extends Controller
 {
@@ -19,7 +20,7 @@ class BoardExController extends Controller
 
     public function index(){
 
-        $BoardList = $this->BoardEx->latest()->paginate(2);
+        $BoardList = $this->BoardEx->latest()->paginate(5);
         //dd($BoardList);
 
         return view('BoardEx.index', compact('BoardList'));
@@ -31,15 +32,11 @@ class BoardExController extends Controller
         return view('BoardEx.create');
     }
 
-    public function store(Request $request){
-
-        $request = $request->validate([
-            'name' => 'required',
-            'content' => 'required'
-
-        ]);
-
-        $this->BoardEx->create($request);
+    public function store(BoardExRequest $request){
+    
+        $validated = $request->validated();
+      
+        $this->BoardEx->create($validated);
         return redirect()->route('BoardEx.index');
 
 
