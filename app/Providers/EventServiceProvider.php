@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\BoardEx;
+use App\Observers\BoardObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +29,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //옵저버와 게시판모델 연결
+        BoardEx::observe(BoardObserver::class);
     }
 }
