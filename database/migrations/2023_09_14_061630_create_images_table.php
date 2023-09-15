@@ -11,7 +11,7 @@ class CreateImagesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    /*public function up()
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
@@ -19,7 +19,7 @@ class CreateImagesTable extends Migration
             $table->text('path');
             $table->timestamps();
         });
-    }
+    }*/
 
     /**
      * Reverse the migrations.

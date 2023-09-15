@@ -64,10 +64,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+     
+        $data['ip'] = $_SERVER['REMOTE_ADDR'];
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'ip_address'=>$data['ip'],
         ]);
     }
 }
