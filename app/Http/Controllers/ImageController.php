@@ -60,8 +60,18 @@ class ImageController extends Controller
 
 
     public function index(){
-        $lists = $this->image->paginate(5);
+        $lists = $this->image->orderBy('created_at','desc')->paginate(5);
         return view('image/index',compact('lists'));
+
+    }
+
+
+    public function destroy(Image $image, Request $request){
+        $image -> delete();
+
+        Storage::delete($image->path);
+
+        return redirect()->route('image.index');
 
     }
 

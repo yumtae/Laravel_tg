@@ -38,10 +38,10 @@ Route::get('/algorithm', function () { return view('old_file.algorithm.index'); 
 
 
 
-    // 이 그룹 내의 모든 라우트는 로그인한 사용자에게만 접근 가능합니다.
-    Route::get('/image/create', [App\Http\Controllers\ImageController::class, 'create'])->name('image.create');
-    Route::post('/image/store', [App\Http\Controllers\ImageController::class, 'store'] )->name('image.store');
-
+// 이 그룹 내의 모든 라우트는 로그인한 사용자에게만 접근 가능합니다.
+Route::get('/image/create', [App\Http\Controllers\ImageController::class, 'create'])->name('image.create');
+Route::post('/image/store', [App\Http\Controllers\ImageController::class, 'store'] )->name('image.store');
+Route::delete('{image}',[App\Http\Controllers\ImageController::class, 'destroy'])->name('image.destroy');
 
 
 //이미지업로드 예제
