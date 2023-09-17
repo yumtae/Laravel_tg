@@ -98,6 +98,10 @@ Route::get('/engineer/software_development/{no}', [App\Http\Controllers\OldFileC
 
 
 
+Route::get('/roulette', function () { return view('old_file.sub_pg.roulette'); })->name('roulette');
+Route::post('/roulette', [App\Http\Controllers\OldFileController::class,'rouletteSpin'] );
+
+
 
 Route::get('/network', function () { return view('old_file.network.index'); });
 

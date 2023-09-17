@@ -105,7 +105,7 @@
 				.java_spring_content_box{margin:30px 0;border-bottom:1px solid #eee;padding-bottom:30px}
 
 				.margin10{margin:10px 0}
-				img{width:90%;margin:5px 0}
+				#gisa_engineer img{width:90%;margin:5px 0}
 				#youtube_engineer{display:none}
 
 			</style>

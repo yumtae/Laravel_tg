@@ -18,6 +18,8 @@
 
 <a href="/boardEx">라라벨 게시판</a><br/>
 <a href="/image">라라벨 이미지 업로드</a><br/>
+<a href="/roulette">룰렛</a><br/>
+<br/>
 
 
 <a href="/industrial_skill">정보처리산업기사(실기)</a><br/>
@@ -26,23 +28,26 @@
 
 
 
-<!-- <a href="./stardewvalley">stardewvalley</a><br/> -->
+
 
 <a href="./network">네트워크관리사2급</a><br/>
 <a href="./excel">PHP - excel</a><br/>
 
 
-<!-- <a href="./bootstrap">bootstrap</a><br/> -->
+
 <a href="./algorithm">알고리즘</a><br/>
 <a href="./spring">자바_스프링</a><br/>
 <a href="./java">자바_기본</a><br/>
 <a href="./web">웹개발자의 기본</a><br/>
 
 <br/><br/><br/>
-<!--<a href="./guitar">guitar</a><br/>
+
+{{----- <a href="./stardewvalley">stardewvalley</a><br/> 
+ <a href="./bootstrap">bootstrap</a><br/> 
+ href="./guitar">guitar</a><br/>
 <a href="./poe">poe</a><br/> 
 <a href="./DIA">DIA</a><br/>  
-<a href="./sub_pg/sojang.html">소장</a><br/>  -->
+<a href="./sub_pg/sojang.html">소장</a><br/>----}}
  
 <br/>
 
@@ -65,13 +70,14 @@ $week = array("월","화","수","목","금","토","일");
     $arr2 = array("ko"=> "하나", "ja"=> "いち","en"=>"one");
     $result2 = "";
     foreach($arr2 as $key=>$val){
-        $result2 .= $key . ":" . $val . "<br/>";
+        $result2 .= $key . ":" . $val . "<br>";
     }
 
+    $result2=nl2br($result2);
 
     @endphp
 
 
     <p> {{$result1}}</p>
-    <p> {{$result2}}</p>
+    <p> {!!$result2!!}</p>
 
